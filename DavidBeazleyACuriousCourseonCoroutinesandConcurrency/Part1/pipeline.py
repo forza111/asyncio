@@ -10,7 +10,7 @@ if __name__ == "__main__":
     from follow import follow
 
     # Set up a processing pipe : tail -f | grep python
-    logfile = open("acess-log")
+    logfile = open("access-log")
     loglines = follow(logfile)
     pylines = grep("python", loglines)
 
