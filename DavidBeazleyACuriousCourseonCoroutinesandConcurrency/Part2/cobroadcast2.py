@@ -48,7 +48,8 @@ def broadcast(targets):
 
 if __name__ == "__main__":
     with open(access_log) as f:
-        follow(f, broadcast([grep("python", printer()),
-                             grep("ply",printer()),
-                             grep("swig",printer())])
+        p = printer()
+        follow(f, broadcast([grep("python", p),
+                             grep("ply",p),
+                             grep("swig",p)])
                )
