@@ -1,13 +1,18 @@
 import asyncio
 import queue
+from elapsedtimer import ElapsedTimer
 
 async def task(name, work_queue):
     while not work_queue.empty():
+        print("before await delay")
         delay = await work_queue.get()
-        # et  = ET()
+        print(f"await delay {delay}")
+        et = ElapsedTimer()
+        et.start()
         print(f"Task {name} running")
         await asyncio.sleep(delay)
-        print(f"Task {name} total elapsed time:")
+        et.stop()
+        print(f"Task {name} total elapsed time: {et.elapsed:.1f}")
 
 
 async def main():
